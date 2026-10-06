@@ -1,0 +1,82 @@
+.navStyle {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(5px) brightness(90%);
+  border: 1px solid rgb(147, 147, 147);
+  box-shadow: 0px 2px 5px black;
+  overflow: hidden;
+}
+
+.tagStyle {
+  min-width: 4rem;
+  text-align: center;
+  font-weight: bolder;
+  font-size: 0.9rem;
+  background-color: var(--cl1);
+  color: white;
+  border-radius: 1rem;
+  font-family: var(--font4);
+  overflow: hidden;
+}
+
+.inputSearchStyle {
+  outline: none;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  padding-left: 1rem;
+}
+
+.btnStyle {
+  background: transparent;
+  border-radius: 0.5rem;
+  min-width: 2rem;
+  border: 1px solid var(--cl1);
+  color: var(--cl1);
+  transition: all 0.5s ease-in-out;
+}
+
+@media screen and (min-width: 992px) {
+  .tagStyle {
+    position: relative;
+    background-color: transparent;
+    transition: all 0.5s ease-in-out;
+    border-radius: 0;
+    font-size: 1.1rem;
+  }
+
+  .tagStyle:hover {
+    transition: all 0.1s ease;
+    border-radius: 0.5rem;
+  }
+
+  .tagStyle::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0.2rem;
+    height: 1px;
+
+    background: var(--cl1);
+    transform: scale(0);
+    transition: all 0.3s ease-in-out;
+    z-index: -1;
+  }
+
+  .tagStyle:hover::before {
+    left: 0%;
+    height: 100%;
+    width: 100%;
+    transform: scale(3);
+  }
+
+  .btnStyle:hover {
+    background-color: var(--cl1);
+    color: var(--cl2);
+  }
+}
+
+.active {
+  background-color: red;
+  border-radius: 0.5rem;
+}

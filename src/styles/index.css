@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Fascinate+Inline&family=Fredoka:wght@300..700&family=Doto:wght@100..900&family=Coiny&family=Press+Start+2P&display=swap");
+
+:root {
+  --font1: "Fascinate Inline", system-ui;
+  --font2: "Coiny", system-ui;
+  --font3: "Press Start 2P", system-ui;
+  --font4: "Doto", sans-serif;
+  --font5: "Fredoka", sans-serif;
+  --cl1: #ac533d;
+  --cl2: #fff;
+  --cl3: #f8ebb5;
+  --cl4: #55f970;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  min-width: 280px;
+  min-height: 100dvh;
+  background-image:
+    linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("/bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.sharedClass {
+  min-height: 100dvh;
+}
+
+.sharedFont {
+  font-family: var(--font3);
+  color: var(--cl2);
+}
+
+.sharedFont2 {
+  font-family: var(--font4);
+  color: var(--cl2);
+}
+
+.sharedPadding {
+  margin-top: 1rem;
+}
