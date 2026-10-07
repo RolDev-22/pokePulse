@@ -30,20 +30,17 @@
   background-attachment: fixed;
 }
 
-.sharedClass {
-  min-height: 100dvh;
+li {
+  list-style: none;
 }
 
-.sharedFont {
+.titleFont {
   font-family: var(--font3);
-  color: var(--cl2);
 }
 
-.sharedFont2 {
-  font-family: var(--font4);
-  color: var(--cl2);
-}
-
-.sharedPadding {
-  margin-top: 1rem;
+.pbStyle {
+  display: grid;
+  place-items: center;
+  min-height: 100dvh;
+  font-size: larger;
 }

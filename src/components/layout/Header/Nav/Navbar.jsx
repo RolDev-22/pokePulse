@@ -4,8 +4,19 @@ import { SiSearxng } from "react-icons/si";
 export const Navbar = () => {
   return (
     <nav
-      className={`${styles.navStyle}  z-3 d-flex flex-column col-12 p-1 rounded-4 justify-content-center align-items-center mt-5 mt-md-3`}>
-      <ul className="p-0 m-0 d-flex flex-wrap gap-1 gap-lg-2 col-12 justify-content-center align-items-center"></ul>
+      className={`${styles.navStyle} d-flex m-0 p-0 flex-column col-12 p-1 rounded-4 justify-content-center align-items-center`}>
+      <ul className="p-0 m-0 d-flex flex-wrap gap-1 gap-lg-2 col-12 justify-content-center align-items-center">
+        <li className={`${styles.tagStyle}`}>Kanto</li>
+        <li className={`${styles.tagStyle}`}>Johto</li>
+        <li className={`${styles.tagStyle}`}>Hoenn</li>
+        <li className={`${styles.tagStyle}`}>Sinnoh</li>
+        <li className={`${styles.tagStyle}`}>Unova</li>
+        <li className={`${styles.tagStyle}`}>Kalos</li>
+        <li className={`${styles.tagStyle}`}>Alola</li>
+        <li className={`${styles.tagStyle}`}>Galar</li>
+        <li className={`${styles.tagStyle}`}>Hisui</li>
+        <li className={`${styles.tagStyle}`}>Paldea</li>
+      </ul>
 
       <div className={`container-fluid p-1`}>
         <form
