@@ -11,14 +11,14 @@ export const Card = ({ data = [] }) => {
 
   return (
     <article
-      className={`${styles.cardStyle} user-select-none d-flex flex-column p-2 col-10 col-md-5 col-lg-4 text-capitalize text-light`}>
+      className={`${styles.cardStyle} user-select-none d-flex flex-column p-2 col-10 col-md-5 col-lg-3 text-capitalize text-light`}>
       <section className="d-flex flex-column p-1 w-100">
         <h6
           className={`${styles.cardTitle} d-flex flex-row justify-content-between align-items-center p-1 m-0`}>
           #00{data.id} | {category || error}
         </h6>
-        <article className="p-1 container-fluid d-flex flex-row ">
-          <p className="m-0 w-50 fs-3">{data.name}</p>
+        <article className="p-1 container d-flex flex-md-row ">
+          <p className="m-0 w-50">{data.name}</p>
           {data.types.map((type, index) => (
             <span
               key={index}

@@ -4,6 +4,8 @@
   animation: moverGradiente 10s ease infinite;
   border: 2px outset var(--cl1);
   border-radius: 1rem;
+  min-height: 300px;
+  justify-content: space-around;
 }
 
 .cardTitle {
@@ -24,7 +26,7 @@
   padding: 0.3rem;
   border-radius: 1rem;
   background-color: var(--cl1);
-  font-size: 0.8rem;
+  font-size: 0.6rem;
 }
 
 .figureStyle {
