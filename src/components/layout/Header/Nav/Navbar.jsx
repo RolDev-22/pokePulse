@@ -2,8 +2,6 @@ import { useContext, useState, useRef } from "react";
 import styles from "./Navbar.module.css";
 import { SiSearxng } from "react-icons/si";
 import { useRegion } from "@/hooks/useRegions";
-/* import { SearchByNameContext } from "@context/searchByNameContext.jsx";
-import { SearchByRegionContext } from "@context/searchByRegionContext.jsx"; */
 import { SearchValueContext } from "@context/searchValueContext .jsx";
 
 export const Navbar = () => {
@@ -12,14 +10,7 @@ export const Navbar = () => {
   const [localName, setLocalName] = useState(null);
 
   const { regions, regLoad, regErr } = useRegion();
-  /*   const { setSearchByName } = useContext(SearchByNameContext);
-  const { setSearchByRegion } = useContext(SearchByRegionContext); */
   const { setSearchValue } = useContext(SearchValueContext);
-
-  function resetValue() {
-    setSearchValue(null);
-    setLocalName(null);
-  }
 
   const handleSetUrl = (name, url) => {
     refToInput.current.value = name.toUpperCase();

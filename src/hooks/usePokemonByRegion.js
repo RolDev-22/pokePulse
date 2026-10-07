@@ -22,7 +22,6 @@ export function usePokemonByRegion(urlRegion) {
 
         /* Empleamos el llamado desde la API */
         const data = await getByRegion(urlRegion);
-
         setInfoPokedex(data);
       } catch (error) {
         setErrPokedex(error.message);

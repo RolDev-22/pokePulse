@@ -9,14 +9,11 @@ export function useRegion() {
   useEffect(() => {
     async function fetchRegion() {
       try {
-        /* Receteamos valores anteriores obtenidos*/
         setLoading(true);
         setError(null);
 
-        /* Empleamos el llamado desde la API */
         const data = await getAllRegion();
 
-        /* Ingresamos los datos a la variable */
         setRegions(data);
       } catch (error) {
         setError(error.message);
