@@ -2,18 +2,18 @@ import style from "./Load.module.css";
 
 export const Load = ({ actuator }) => {
   return (
-    <section className={`${actuator && style.active} ${style.container}`}>
+    <section className={`${style.mainContainer} ${actuator && style.active}`}>
       <div className={`${style.spinner}`}>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
     </section>
   );

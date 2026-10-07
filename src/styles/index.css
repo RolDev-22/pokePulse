@@ -24,7 +24,7 @@
   background-image:
     linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url("/bg.jpg");
-  background-position: center;
+  background-position: right;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -32,10 +32,13 @@
 
 li {
   list-style: none;
+  user-select: none;
 }
 
 .titleFont {
   font-family: var(--font3);
+  color: var(--cl2);
+  user-select: none;
 }
 
 .pbStyle {
@@ -43,4 +46,22 @@ li {
   place-items: center;
   min-height: 100dvh;
   font-size: larger;
+}
+
+.hightValue {
+  min-height: 100dvh;
+}
+
+.pbCard {
+  display: grid;
+  place-items: center;
+  min-width: 400px;
+  min-height: 500px;
+  background-color: yellow;
+}
+
+.sticky {
+  top: 0;
+  left: 0;
+  position: sticky;
 }

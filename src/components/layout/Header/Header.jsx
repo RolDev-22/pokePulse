@@ -18,7 +18,7 @@ export const Header = () => {
 
   return (
     <header
-      className={`${scrollControl > 100 ? "position-fixed" : "position-static"} d-flex flex-column p-1 col-12 justify-content-center align-items-center`}>
+      className={`${scrollControl > 0 ? "sticky" : ""} d-flex flex-column p-1 col-12 justify-content-center align-items-center`}>
       <div className="d-flex flex-column p-2 col-11 justify-content-center align-items-center">
         <h1 className="titleFont">PokePlus</h1>
         <Navbar />
