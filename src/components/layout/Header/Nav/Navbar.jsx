@@ -10,6 +10,12 @@ export const Navbar = () => {
   const refToSearchInput = useRef(null);
   const [localValue, setLocalValue] = useState(null);
 
+  function handleChange(e) {
+    setLocalValue(e.target.value);
+    const lengthInput = e.target.value.length;
+    if (lengthInput === 0) setSearchValue("");
+  }
+
   function handleSearch(name) {
     refToSearchInput.current.value = name;
     setSearchValue(name);
@@ -18,13 +24,13 @@ export const Navbar = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    const actualValue = refToSearchInput.current.value;
+    const actualValue = refToSearchInput.current.value.toLowerCase();
 
-    const match = data?.find((dt) => actualValue === dt.name);
+    const match = data?.find((dt) => actualValue === dt);
 
     if (match) {
-      setSearchValue(match.name);
-      setLocalValue(match.name);
+      setSearchValue(match);
+      setLocalValue(match);
     } else {
       setSearchValue(actualValue);
     }
@@ -39,13 +45,13 @@ export const Navbar = () => {
 
         {data &&
           data
-            .filter((dt) => dt.name !== "orre")
-            .map((dt) => (
+            .filter((dt) => dt !== "orre")
+            .map((dt, i) => (
               <li
-                key={dt.url}
-                onClick={() => handleSearch(dt.name)}
-                className={`text-capitalize ${styles.tagStyle} ${dt.name == localValue ? styles.active : ""} `}>
-                {dt.name}
+                key={i}
+                onClick={() => handleSearch(dt)}
+                className={`text-capitalize ${styles.tagStyle} ${dt == localValue ? styles.active : ""} `}>
+                {dt}
               </li>
             ))}
       </ul>
@@ -62,7 +68,7 @@ export const Navbar = () => {
             autoComplete="off"
             placeholder="Escribe región, número o nombre"
             aria-label="Search"
-            onChange={(e) => setLocalValue(e.target.value.toLowerCase())}
+            onChange={handleChange}
           />
           <button
             className={`${styles.btnStyle} d-flex p-1 text-center justyfy-content-center align-items-center`}

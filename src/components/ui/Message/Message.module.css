@@ -33,6 +33,6 @@
   font-weight: bolder;
   text-align: justify;
   font-size: larger;
-
   gap: 1rem;
+  color: var(--cl1);
 }

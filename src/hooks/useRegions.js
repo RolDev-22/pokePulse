@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getRegions } from "@services/getRegions";
 
-export function useRegions() {
+export const useRegions = () => {
   const [data, setData] = useState([]);
   const [loadData, setLoadData] = useState(true);
   const [errorData, setErrorData] = useState(null);
@@ -26,4 +26,4 @@ export function useRegions() {
   }, []);
 
   return { data, loadData, errorData };
-}
+};
