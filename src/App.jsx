@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import { Header } from "@layout/Header/Header";
-import { Load } from "@components/ui/Load/Load";
-import { Message } from "@components/ui/Message/Message";
+import { Load } from "@ui/Load/Load";
+import { Message } from "@ui/Message/Message";
+import { Pagination } from "@ui/Pagination/Pagination";
 import { SearchValueContext } from "@context/searchValueContext ";
 import { usePokeByRagion } from "@hooks/usePokeByRagion";
 import { useRegions } from "@hooks/useRegions";
@@ -37,10 +38,15 @@ function App() {
         <>
           <Load actuator={currentLoad} />
           <Message message={currentError} />
-
-          <p>Valor Buscado: {searchValue}</p>
-
-          {pokedexInfo && pokedexInfo.map((pkx, i) => <p key={i}>{pkx}</p>)}
+          {/*    <div className="d-flex flex-wrap gap-3 justify-content-center">
+            {pokedexInfo &&
+              pokedexInfo.map((pkx, i) => (
+                <p key={i} className="pbCard">
+                  {pkx}
+                </p>
+              ))}
+          </div> */}
+          <Pagination datos={pokedexInfo} />
         </>
       )}
     </div>
