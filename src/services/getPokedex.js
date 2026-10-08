@@ -12,13 +12,13 @@ export async function getPokedex(regionName) {
   }
 
   try {
-    const response = await fetch(`${BS_URL}/region/${regionName}`);
+    const data = await fetch(`${BS_URL}/region/${regionName}`);
 
-    if (!response.ok) {
+    if (!data.ok) {
       throw new Error("Fallo en fetch de la API Pokedex");
     }
-    const data = await response.json();
-    const confirmDat = data?.pokedexes ?? [];
+    const response = await data.json();
+    const confirmDat = response?.pokedexes ?? [];
     const urlsPokedexes = confirmDat.map((url) => url.url);
 
     storage.set(regionName, urlsPokedexes);

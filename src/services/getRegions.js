@@ -11,14 +11,14 @@ export async function getRegions() {
   }
 
   try {
-    const response = await fetch(`${BS_URL}/region/`);
+    const data = await fetch(`${BS_URL}/region/`);
 
-    if (!response.ok) {
+    if (!data.ok) {
       throw new Error("Fallo en fetch de la API Regions");
     }
 
-    const data = await response.json();
-    const confirmData = data?.results ?? [];
+    const response = await data.json();
+    const confirmData = response?.results ?? [];
     const nameRegion = confirmData.map((nr) => nr.name);
     storage.set("regionsName", nameRegion);
 
