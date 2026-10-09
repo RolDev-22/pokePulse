@@ -61,8 +61,7 @@ export const Pagination = ({ datos }) => {
 
   return (
     <div className={`${style.Container} p-2 `}>
-      <div
-        className={`${style.contFix} d-flex justify-content-center container-fluid justify-content-center align-items-center`}>
+      <div className={`${style.contFix}`}>
         <div className={`${style.paginCont}`}>
           <button
             className={`${style.btnMain}`}
