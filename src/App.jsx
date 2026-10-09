@@ -38,14 +38,6 @@ function App() {
         <>
           <Load actuator={currentLoad} />
           <Message message={currentError} />
-          {/*    <div className="d-flex flex-wrap gap-3 justify-content-center">
-            {pokedexInfo &&
-              pokedexInfo.map((pkx, i) => (
-                <p key={i} className="pbCard">
-                  {pkx}
-                </p>
-              ))}
-          </div> */}
           <Pagination datos={pokedexInfo} />
         </>
       )}

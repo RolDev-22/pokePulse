@@ -30,8 +30,8 @@
   background: transparent;
   border-radius: 0.5rem;
   min-width: 2rem;
-  border: 1px solid var(--cl1);
-  color: var(--cl1);
+  border: 1px solid var(--cl7);
+  color: var(--cl7);
   transition: all 0.5s ease-in-out;
 }
 
@@ -57,7 +57,7 @@
     width: 0.2rem;
     height: 1px;
 
-    background: var(--cl1);
+    background: var(--cl8);
     transform: scale(0);
     transition: all 0.3s ease-in-out;
     z-index: -1;
@@ -77,6 +77,6 @@
 }
 
 .active {
-  background-color: red;
+  background-color: var(--cl6);
   border-radius: 0.5rem;
 }

@@ -1,0 +1,96 @@
+.Container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 1rem;
+  position: relative;
+  margin-top: 5rem;
+}
+
+.Card {
+  display: grid;
+  place-items: center;
+  width: 350px;
+  height: 300px;
+  border-radius: 0.5rem;
+  background-color: midnightblue;
+  background: radial-gradient(circle, #00d4ff 30%, midnightblue 100%);
+}
+
+.paginCont {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.5rem 0.1rem 0.5rem 0.1rem;
+  border-radius: 1rem;
+  max-width: 300px;
+}
+
+.contFix {
+  position: fixed;
+  top: 13.5rem;
+}
+
+.btnMain {
+  border: none;
+  display: grid;
+  place-items: center;
+  padding: 0.2rem;
+  background: var(--cl8);
+  color: honeydew;
+  border-radius: 0.5rem;
+}
+
+.pagButton {
+  display: grid;
+  place-items: center;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  border-radius: 0.3rem;
+}
+
+@media screen and (min-width: 440px) {
+  .Container {
+    margin-top: 5rem;
+  }
+
+  .Card {
+    width: 300px;
+  }
+
+  .contFix {
+    top: 12.5rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .Container {
+    margin-top: 4rem;
+  }
+
+  .contFix {
+    top: 11.5rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .Container {
+    margin-top: 4rem;
+  }
+
+  .contFix {
+    top: 11.5rem;
+  }
+}
+
+@media screen and (min-width: 860px) {
+  .Container {
+    margin-top: 4rem;
+  }
+
+  .contFix {
+    top: 10rem;
+  }
+}
