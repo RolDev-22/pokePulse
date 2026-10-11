@@ -3,9 +3,11 @@ import { Header } from "@layout/Header/Header";
 import { Load } from "@ui/Load/Load";
 import { Message } from "@ui/Message/Message";
 import { Pagination } from "@ui/Pagination/Pagination";
+import { Card } from "@ui/Card/Card";
 import { SearchValueContext } from "@context/searchValueContext ";
-import { usePokeByRagion } from "@hooks/usePokeByRagion";
 import { useRegions } from "@hooks/useRegions";
+import { usePokeByRagion } from "@hooks/usePokeByRagion";
+import { usePokeByName } from "@hooks/usePokeByName";
 import { MdOutlineCatchingPokemon } from "react-icons/md";
 
 function App() {
@@ -14,11 +16,15 @@ function App() {
   const checked = data.some((dt) => dt === searchValue);
 
   const { pokedexInfo, loadInfoPokedex, errorPokedex } = usePokeByRagion(
-    checked && { regionName: searchValue },
+    checked ? { regionName: searchValue } : undefined,
   );
 
-  const currentLoad = loadInfoPokedex;
-  const currentError = errorPokedex;
+  const { cardInfo, cardLoad, cardMess } = usePokeByName(
+    !checked ? { name: searchValue } : undefined,
+  );
+
+  const currentLoad = loadInfoPokedex || cardLoad;
+  const currentError = errorPokedex || cardMess;
 
   return (
     <div className="hightValue d-flex flex-column position-relative">
@@ -35,11 +41,17 @@ function App() {
           </p>
         </div>
       ) : (
-        <>
+        <div className="pbStyle2">
           <Load actuator={currentLoad} />
           <Message message={currentError} />
-          <Pagination datos={pokedexInfo} />
-        </>
+          {!checked ? (
+            <>
+              <Card data={cardInfo}></Card>
+            </>
+          ) : (
+            <Pagination datos={pokedexInfo} />
+          )}
+        </div>
       )}
     </div>
   );

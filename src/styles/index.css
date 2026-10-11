@@ -46,11 +46,9 @@ li {
   user-select: none;
 }
 
-.pbStyle {
-  display: grid;
-  place-items: center;
-  min-height: 100dvh;
-  font-size: larger;
+.pbStyle2 {
+  display: flex;
+  justify-content: center;
 }
 
 .hightValue {

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { getPokedex } from "@services/getPokedex";
 import { getInfoPokedex } from "@/services/getInfoPokedex";
 
-export const usePokeByRagion = ({ regionName }) => {
+export const usePokeByRagion = (params) => {
   const [pokedexInfo, setPokedexInfo] = useState([]);
   const [loadInfoPokedex, setLoadInfoPokedex] = useState(false);
   const [errorPokedex, setErrorPokedex] = useState(null);
@@ -13,30 +13,47 @@ export const usePokeByRagion = ({ regionName }) => {
     setErrorPokedex(null);
   }
 
+  const regionName = params?.regionName;
+
   useEffect(() => {
+    // Si no hay región, limpiamos y salimos de inmediato
     if (!regionName) {
       restorFunction();
       return;
     }
 
+    let isMounted = true;
+
     async function getPokesByRegion() {
       try {
-        restorFunction();
+        setErrorPokedex(null);
+        setLoadInfoPokedex(true);
 
-        //Obtenemos las urls de los pokedex asociados a la region buscada
+        // Obtenemos las urls de los pokedex asociados a la region buscada
         const urlData = await getPokedex(regionName);
 
-        //Obtenemos los pokemones de cada pokedex
+        // Obtenemos los pokemones de cada pokedex
         const pokemonsData = await getInfoPokedex(urlData, regionName);
 
-        setPokedexInfo(pokemonsData);
+        if (isMounted) {
+          setPokedexInfo(pokemonsData);
+        }
       } catch (e) {
-        setErrorPokedex(e.message);
+        if (isMounted) {
+          setErrorPokedex(e.message);
+        }
       } finally {
-        setLoadInfoPokedex(false);
+        if (isMounted) {
+          setLoadInfoPokedex(false);
+        }
       }
     }
+
     getPokesByRegion();
+
+    return () => {
+      isMounted = false;
+    };
   }, [regionName]);
 
   return { pokedexInfo, loadInfoPokedex, errorPokedex };

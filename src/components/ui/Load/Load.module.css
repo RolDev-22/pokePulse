@@ -1,4 +1,5 @@
 .mainContainer {
+  top: 0;
   position: absolute;
   display: none;
   place-items: center;
