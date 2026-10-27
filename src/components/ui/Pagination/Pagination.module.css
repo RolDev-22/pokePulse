@@ -5,7 +5,8 @@
   align-items: center;
   row-gap: 1rem;
   position: relative;
-  margin-top: 5rem;
+  margin-top: 0.2rem;
+  background-color: red;
 }
 
 .Card {
@@ -16,6 +17,7 @@
   border-radius: 0.5rem;
   background-color: midnightblue;
   background: radial-gradient(circle, #00d4ff 30%, midnightblue 100%);
+  margin-top: 5rem;
 }
 
 .paginCont {
@@ -33,6 +35,7 @@
   place-items: center;
   top: 13.5rem;
   overflow: hidden;
+  z-index: 99;
 }
 
 .btnMain {
@@ -76,6 +79,10 @@
   .contFix {
     top: 11.5rem;
   }
+
+  .Card {
+    margin-top: 1rem;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -95,5 +102,9 @@
 
   .contFix {
     top: 10rem;
+  }
+
+  .Card {
+    margin-top: 1rem;
   }
 }
