@@ -46,7 +46,7 @@ li {
   user-select: none;
 }
 
-.pbStyle2 {
+.mainContainer-search {
   display: flex;
   justify-content: center;
 }

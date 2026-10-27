@@ -4,22 +4,41 @@ import { SiIconfinder } from "react-icons/si";
 import { FaWeightScale } from "react-icons/fa6";
 import { FaRulerVertical } from "react-icons/fa";
 
-// 1. Creamos un componente individual para cada tarjeta
-const CardItem = ({ dt }) => {
+import { usePokeByName } from "@/hooks/usePokeByName";
+import { Load } from "@ui/Load/Load";
+import { Message } from "@ui/Message/Message";
+
+// Recibe directamente la prop 'name' (un string literal, ej: "pikachu")
+export const Card = ({ name, place = 0 }) => {
+  const { cardInfo, cardLoad, cardMess } = usePokeByName({ name: name });
   const [isShiny, setIsShiny] = useState(false);
+
+  // 1. Manejo de estado de carga
+  if (cardLoad) {
+    return <Load actuator={cardLoad} />;
+  }
+
+  // 2. Manejo de errores
+  if (cardMess) {
+    return <Message message={cardMess} />;
+  }
+
+  // 3. Protección por si cardInfo aún está vacío o no ha llegado
+  if (!cardInfo || Object.keys(cardInfo).length === 0) {
+    return null;
+  }
 
   return (
     <article
-      key={dt.id}
-      className={`${styles.cardStyle} user-select-none d-flex flex-column p-2 col-10 col-md-5 col-lg-3 text-capitalize text-light`}>
+      className={`${styles.cardStyle} ${place === 1 ? styles.widthChange : ""} user-select-none d-flex flex-column p-2 col-10 col-md-5 col-lg-3 text-capitalize text-light`}>
       <section className="d-flex flex-column p-1 w-100">
         <h6
           className={`${styles.cardTitle} d-flex flex-row justify-content-between align-items-center p-1 m-0`}>
-          #00{dt.id} | {dt.category}
+          #00{cardInfo.id} | {cardInfo.category}
         </h6>
         <article className="p-1 container d-flex flex-md-row ">
-          <p className="m-0 w-50">{dt.name}</p>
-          {dt.types.map((tp, index) => (
+          <p className="m-0 w-50">{cardInfo.name}</p>
+          {cardInfo.types?.map((tp, index) => (
             <span
               key={index}
               className="d-flex flex-grow-1 text-center justify-content-end align-items-center p-1">
@@ -33,7 +52,7 @@ const CardItem = ({ dt }) => {
 
       <section className="d-flex flex-column justify-content-between align-items-center p-0 m-0">
         <div className="w-100 p-1 d-flex flex-row justify-content-between align-items-center">
-          <label className="p-0 m-0">Activar Shinny</label>
+          <label className="p-0 m-0">Activar Shiny</label>
           <label className={`${styles.switch} m-0 p-0`}>
             <input
               checked={isShiny}
@@ -50,13 +69,13 @@ const CardItem = ({ dt }) => {
             <div className="overflow-hidden position-relative">
               <p className="textShared position-absolute px-2">
                 PS
-                <span className="fs-3"> {dt.experience}</span>
+                <span className="fs-3"> {cardInfo.experience}</span>
               </p>
-              {dt.normalImg && (
+              {cardInfo.normalImg && (
                 <img
                   className="img-fluid"
-                  src={isShiny ? dt.shinyImg : dt.normalImg}
-                  alt={dt.name}
+                  src={isShiny ? cardInfo.shinyImg : cardInfo.normalImg}
+                  alt={cardInfo.name}
                 />
               )}
             </div>
@@ -69,7 +88,7 @@ const CardItem = ({ dt }) => {
               </figure>
               <div className="m-0 p-0 text-start">
                 <p className="m-0 p-0">Height</p>
-                {dt.height}
+                {cardInfo.height}
               </div>
             </div>
             <div className="rounded-3 gap-2 gap-md-5 textShared w-75 d-flex text-center justify-content-center align-items-center">
@@ -78,7 +97,7 @@ const CardItem = ({ dt }) => {
               </figure>
               <div className="m-0 p-0 text-start">
                 <p className="m-0 p-0">Weight</p>
-                {dt.weight}
+                {cardInfo.weight}
               </div>
             </div>
           </article>
@@ -86,9 +105,4 @@ const CardItem = ({ dt }) => {
       </section>
     </article>
   );
-};
-
-// 2. Componente principal que mapea los datos
-export const Card = ({ data = [] }) => {
-  return <>{data && data.map((dt) => <CardItem key={dt.id} dt={dt} />)}</>;
 };

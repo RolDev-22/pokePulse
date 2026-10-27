@@ -8,6 +8,10 @@
   justify-content: space-around;
 }
 
+.widthChange {
+  width: 100%;
+}
+
 .cardTitle {
   max-width: 900px;
   font-size: 0.8rem;

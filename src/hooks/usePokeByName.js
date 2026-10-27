@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { getPokemonCard } from "@/services/getPokemonCard";
 
 export const usePokeByName = (params) => {
-  const [cardInfo, setCardInfo] = useState([]);
+  const [cardInfo, setCardInfo] = useState({});
   const [cardLoad, setCardLoad] = useState(false);
   const [cardMess, setCardMess] = useState(null);
 
   function restorFunction() {
-    setCardInfo([]);
+    setCardInfo({});
     setCardLoad(false);
     setCardMess(null);
   }

@@ -3,6 +3,8 @@ import { RxDoubleArrowLeft } from "react-icons/rx";
 import { RxDoubleArrowRight } from "react-icons/rx";
 import { SearchValueContext } from "@/context/searchValueContext ";
 
+import { Card } from "@ui/Card/Card";
+
 import style from "./Pagination.module.css";
 
 export const Pagination = ({ datos }) => {
@@ -109,7 +111,7 @@ export const Pagination = ({ datos }) => {
           // Usamos el índice o el nombre mismo como key si es único
 
           <li className={`${style.Card}`} key={nombrePokemon || index}>
-            {nombrePokemon}
+            <Card name={nombrePokemon} place={1}></Card>
           </li>
         ))}
       </ul>

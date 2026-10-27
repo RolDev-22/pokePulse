@@ -17,19 +17,17 @@ export async function getPokemonCard(data, use) {
 
       const categoryPokemon = await getCategory(urlToSpecies);
 
-      return [
-        {
-          id: parseDat.id,
-          name: parseDat.name,
-          experience: parseDat.base_experience,
-          height: parseDat.height,
-          weight: parseDat.weight,
-          normalImg: parseDat.sprites?.other?.home?.front_default || defaultImg,
-          shinyImg: parseDat.sprites?.other?.home?.front_shiny || defaultImg,
-          types: parseDat.types?.map((t) => t.type.name) || [],
-          category: categoryPokemon,
-        },
-      ];
+      return {
+        id: parseDat.id,
+        name: parseDat.name,
+        experience: parseDat.base_experience,
+        height: parseDat.height,
+        weight: parseDat.weight,
+        normalImg: parseDat.sprites?.other?.home?.front_default || defaultImg,
+        shinyImg: parseDat.sprites?.other?.home?.front_shiny || defaultImg,
+        types: parseDat.types?.map((t) => t.type.name) || [],
+        category: categoryPokemon,
+      };
     }
   } catch (e) {
     throw new Error("Nombre no registrado en Base de Servidor ", e);

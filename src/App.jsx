@@ -7,7 +7,6 @@ import { Card } from "@ui/Card/Card";
 import { SearchValueContext } from "@context/searchValueContext ";
 import { useRegions } from "@hooks/useRegions";
 import { usePokeByRagion } from "@hooks/usePokeByRagion";
-import { usePokeByName } from "@hooks/usePokeByName";
 import { MdOutlineCatchingPokemon } from "react-icons/md";
 
 function App() {
@@ -18,13 +17,6 @@ function App() {
   const { pokedexInfo, loadInfoPokedex, errorPokedex } = usePokeByRagion(
     checked ? { regionName: searchValue } : undefined,
   );
-
-  const { cardInfo, cardLoad, cardMess } = usePokeByName(
-    !checked ? { name: searchValue } : undefined,
-  );
-
-  const currentLoad = loadInfoPokedex || cardLoad;
-  const currentError = errorPokedex || cardMess;
 
   return (
     <div className="hightValue d-flex flex-column position-relative">
@@ -41,12 +33,12 @@ function App() {
           </p>
         </div>
       ) : (
-        <div className="pbStyle2">
-          <Load actuator={currentLoad} />
-          <Message message={currentError} />
+        <div className="mainContainer-search">
+          <Load actuator={loadInfoPokedex} />
+          <Message message={errorPokedex} />
           {!checked ? (
             <>
-              <Card data={cardInfo}></Card>
+              <Card name={searchValue}></Card>
             </>
           ) : (
             <Pagination datos={pokedexInfo} />
